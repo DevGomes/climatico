@@ -1,0 +1,135 @@
+[{
+	"id": "1",
+	"value": "AC",
+	"viewValue": "Acre"
+},
+     {
+	"id": "2",
+	"value": "AL",
+	"viewValue": "Alagoas"
+},
+     {
+	"id": "3",
+	"value": "AM",
+	"viewValue": "Amazonas"
+},
+     {
+	"id": "4",
+	"value": "AP",
+	"viewValue": "Amapá"
+},
+     {
+	"id": "5",
+	"value": "BA",
+	"viewValue": "Bahia"
+},
+     {
+	"id": "6",
+	"value": "CE",
+	"viewValue": "Ceará"
+},
+     {
+	"id": "7",
+	"value": "DF",
+	"viewValue": "Distrito Federal"
+},
+     {
+	"id": "8",
+	"value": "ES",
+	"viewValue": "Espírito Santo"
+},
+     {
+	"id": "9",
+	"value": "GO",
+	"viewValue": "Goiás"
+},
+     {
+	"id": "10",
+	"value": "MA",
+	"viewValue": "Maranhão"
+},
+     {
+	"id": "11",
+	"value": "MG",
+	"viewValue": "Minas Gerais"
+},
+     {
+	"id": "12",
+	"value": "MS",
+	"viewValue": "Mato Grosso do Sul"
+},
+     {
+	"id": "13",
+	"value": "MT",
+	"viewValue": "Mato Grosso"
+},
+     {
+	"id": "14",
+	"value": "PA",
+	"viewValue": "Pará"
+},
+     {
+	"id": "15",
+	"value": "PB",
+	"viewValue": "Paraíba"
+},
+     {
+	"id": "16",
+	"value": "PE",
+	"viewValue": "Pernambuco"
+},
+     {
+	"id": "17",
+	"value": "PI",
+	"viewValue": "Piauí"
+},
+     {
+	"id": "18",
+	"value": "PR",
+	"viewValue": "Paraná"
+},
+     {
+	"id": "19",
+	"value": "RJ",
+	"viewValue": "Rio de Janeiro"
+},
+     {
+	"id": "20",
+	"value": "RN",
+	"viewValue": "Rio Grande do Norte"
+},
+     {
+	"id": "21",
+	"value": "RO",
+	"viewValue": "Rondônia"
+},
+     {
+	"id": "22",
+	"value": "RR",
+	"viewValue": "Roraima"
+},
+     {
+	"id": "23",
+	"value": "RS",
+	"viewValue": "Rio Grande do Sul"
+},
+     {
+	"id": "24",
+	"value": "SC",
+	"viewValue": "Santa Catarina"
+},
+     {
+	"id": "25",
+	"value": "SE",
+	"viewValue": "Sergipe"
+},
+     {
+	"id": "26",
+	"value": "SP",
+	"viewValue": "São Paulo"
+},
+     {
+	"id": "27",
+	"value": "TO",
+	"viewValue": "Tocantins"
+}]

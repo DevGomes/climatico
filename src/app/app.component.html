@@ -1,0 +1,105 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Climatico</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active">
+          <a href="#">Link
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">Link</a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="#">Action</a>
+            </li>
+            <li>
+              <a href="#">Another action</a>
+            </li>
+            <li>
+              <a href="#">Something else here</a>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li>
+              <a href="#">Separated link</a>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li>
+              <a href="#">One more separated link</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-11">
+        <h2> Bem-vido ao Climatico</h2>
+        <p>Consulte aqui a previsão do tempo e tenha todas as informações do tempo antes de sair de casa.</p>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="col-md-4"></div>
+
+    <div class="col-md-8">
+      <h3>Blumenau, SC</h3>
+      <br>
+      <form [formGroup]="formulario">
+
+        <mat-form-field style="margin-right: 25px;">
+          <mat-select placeholder="Estado" name="estado" (change)=" buscarCidades()" formControlName="estado">
+            <mat-option *ngFor="let estado of estadosBrasilApi" [value]="estado.geonameId">
+              {{ estado.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input type="text" placeholder="Cidade" aria-label="Number" matInput 
+            formControlName="cidade" [matAutocomplete]="autoCidade" 
+            name="cidade">
+          <mat-autocomplete #autoCidade="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option.toponymName">
+              {{ option.toponymName }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+      </form>
+      <br>
+      <br>
+      <div class="row">
+        <div class="col-md-3">
+          <p>Temp. Mínima 20°</p>
+        </div>
+        <div class="col-md-3">
+          <p>Temp. Máxima 30°</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
