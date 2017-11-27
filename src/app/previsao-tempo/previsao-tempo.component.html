@@ -1,0 +1,51 @@
+<mat-icon>home</mat-icon>
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-11">
+      <h2> Bem-vido ao Climatico</h2>
+      <p>Consulte aqui a previsão do tempo e tenha todas as informações do tempo antes de sair de casa.</p>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="col-md-3"></div>
+
+  <div class="col-md-9">
+    <h3>{{tituloRegiaoPais}} Agora: {{temperaturaAtual}}°</h3>
+    <br>
+    <form [formGroup]="formulario">
+
+      <mat-form-field class="select-estados">
+        <mat-select placeholder="Estado" name="estado" (change)="onBuscarCidades()" formControlName="estado">
+          <mat-option *ngFor="let estado of estadosBrasilApi" [value]="estado">
+            {{ estado.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input type="text" placeholder="Cidade" aria-label="Number" matInput 
+          formControlName="cidade" [matAutocomplete]="autoCidade" 
+          name="cidade" #inputAutoCompleteCidade (blur)="verificarCampos($event)">
+        <mat-autocomplete #autoCidade="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptionsCidades | async" 
+            [value]="option.toponymName">
+            {{ option.toponymName }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <button mat-button color="primary" (click)="onBuscarPrevisaoTempo($event)" 
+        calss="button-busca" [disabled]="!validCampos">Buscar</button>
+    </form>
+    <br>
+    <br>
+    <div class="row">
+      <div class="col-md-3">
+        <p>Temp. Mínima {{tempMinima}}°</p>
+      </div>
+      <div class="col-md-3">
+        <p>Temp. Máxima {{tempMaxima}}°</p>
+      </div>
+    </div>
+  </div>
