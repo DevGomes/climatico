@@ -1,5 +1,6 @@
-<mat-icon>home</mat-icon>
-<div class="row">
+<section class="row">
+
+  <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-11">
       <h2> Bem-vido ao Climatico</h2>
@@ -11,7 +12,12 @@
   <div class="col-md-3"></div>
 
   <div class="col-md-9">
-    <h3>{{tituloRegiaoPais}} Agora: {{temperaturaAtual}}°</h3>
+    <h3>
+      <button mat-icon-button (click)="favoritar();"><!--TO_DO -->
+        <mat-icon aria-label="Favoritar cidade" color="accent" matTooltip="Click para favoritar">{{iconeFavorito}}</mat-icon>
+      </button>
+      {{tituloRegiaoPais}}
+    </h3>
     <br>
     <form [formGroup]="formulario">
 
@@ -25,27 +31,65 @@
 
       <mat-form-field>
         <input type="text" placeholder="Cidade" aria-label="Number" matInput 
-          formControlName="cidade" [matAutocomplete]="autoCidade" 
+          formControlName="cidade" [matAutocomplete]="autoCidade"
           name="cidade" #inputAutoCompleteCidade (blur)="verificarCampos($event)">
         <mat-autocomplete #autoCidade="matAutocomplete">
-          <mat-option *ngFor="let option of filteredOptionsCidades | async" 
-            [value]="option.toponymName">
+          <mat-option *ngFor="let option of filteredOptionsCidades | async" [value]="option.toponymName">
             {{ option.toponymName }}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
 
-      <button mat-button color="primary" (click)="onBuscarPrevisaoTempo($event)" 
-        calss="button-busca" [disabled]="!validCampos">Buscar</button>
+      <button mat-icon-button (click)="onBuscarPrevisaoTempo($event)" calss="button-busca" 
+        [disabled]="!validCampos" matTooltip="Buscar previsão do tempo">
+        <mat-icon aria-label="Obter previsão do tempo" color="primary">cloud_done</mat-icon>
+      </button>
     </form>
-    <br>
-    <br>
+
     <div class="row">
-      <div class="col-md-3">
-        <p>Temp. Mínima {{tempMinima}}°</p>
-      </div>
-      <div class="col-md-3">
-        <p>Temp. Máxima {{tempMaxima}}°</p>
+      <div class="col-lg-6 col-sm-6 col-xs-11 col-md-7">
+        <mat-card>
+          <mat-card-content>
+            <div class="row">
+              <div class="col-md-4 col-xs-4" style="font-size: 42px; font-weight: bold;">
+                {{temperaturaAtual}}°C
+              </div>
+              <div class="col-md-4 col-xs-4">
+                <span>Max.</span>
+                <span style="font-size: 30px; font-weight: bold;">{{tempMinima}}°C</span>
+              </div>
+              <div class="col-md-4 col-xs-4">
+                <span>Min.</span>
+                <span style="font-size: 30px; font-weight: bold;"> {{tempMaxima}}°C</span>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
       </div>
     </div>
   </div>
+</section>
+
+<section class="row">
+  <h3>Previão da Semana</h3>
+  <hr/>
+  <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6" *ngFor="let prev of previsaoSemana" style="margin-bottom: 8px;">
+    <mat-card>
+      <mat-card-content>
+        <div class="row">
+          <!-- Segunda-feira 27/Nov -->
+          <div class="col-md-6 col-xs-6">
+            <span>Max.</span>
+            <span style="font-size: 30px; font-weight: bold;">{{prev.high}}°C</span>
+          </div>
+          <div class="col-md-6 col-xs-6">
+            <span>Min.</span>
+            <span style="font-size: 18px; position: relative;">{{prev.low}}°C</span>
+          </div>
+        </div>
+        <span style="position: absolute; bottom: 14px; margin: 0; padding: 0;">{{formatarDataPt_BR(prev.day + ' ' + prev.date)}}</span>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+</section>
