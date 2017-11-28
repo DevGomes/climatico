@@ -6,3 +6,35 @@
 .button-busca {
 	margin-left: 20px;
 }
+
+.temp-agora {
+	font-size: 42px; 
+}
+
+.temp-agora-max-min {
+	font-size: 30px; 
+}
+
+.container-temp-semana {
+	margin-bottom: 8px;
+}
+
+.temp-semana-max {
+	font-size: 30px; 
+}
+
+.temp-semana-min {
+	font-size: 18px; 
+	position: relative;
+}
+
+.temp-semana-data {
+	position: absolute; 
+	bottom: 14px; 
+	margin: 0; 
+	padding: 0;
+}
+
+.negrito {
+	font-weight: bold;
+}
