@@ -30,6 +30,7 @@ export class PrevisaoTempoComponent implements OnInit {
   private validCampos: boolean;
   protected previsaoSemana = [];
   protected iconeFavorito = 'star_border';
+  private cidadeFavorito: string;
 
   constructor(
     private http: Http,
@@ -41,14 +42,17 @@ export class PrevisaoTempoComponent implements OnInit {
   ngOnInit() {
     this.inicializarFormularioReativo();
 
-    const cidadeFavorito = localStorage.getItem('cidade_favorito');
+    this.cidadeFavorito = localStorage.getItem('cidade_favorito');
 
-    if (cidadeFavorito === null) {
+    if (this.cidadeFavorito === null) {
       this.iconeFavorito = 'star_border';
       this.obterDadosPrevisaoTempoBr('SC', 'Blumenau');
     } else {
       this.iconeFavorito = 'star_rate';
-      this.obterDadosPrevisaoTempoBr(cidadeFavorito.split(',')[1], cidadeFavorito.split(',')[0]);
+      this.obterDadosPrevisaoTempoBr(
+          this.cidadeFavorito.split(',')[1],
+          this.cidadeFavorito.split(',')[0]
+      );
     }
   }
 
@@ -77,7 +81,6 @@ export class PrevisaoTempoComponent implements OnInit {
 
   private onBuscarPrevisaoTempo(event): void {
     const cidade = this.formulario.get('cidade').value;
-    console.log('Buscar previsão do tempo...');
 
     this.previsaoTempoService.obterUFEstado(this.formulario.get('estado').value.toponymName)
       .subscribe((uf) => {
@@ -112,10 +115,17 @@ export class PrevisaoTempoComponent implements OnInit {
 
   private obterDadosPrevisaoTempoBr(uf: string, cidade: string): any {
 
+    if ((this.cidadeFavorito)
+      && this.cidadeFavorito.split(',')[0].trim() === cidade.trim()
+      && this.cidadeFavorito.split(',')[1].trim() === uf.trim()) {
+      this.iconeFavorito = 'star_rate';
+    } else {
+      this.iconeFavorito = 'star_border';
+    }
+
     this.previsaoTempoService
       .carregarPrevisaoTempoBr(uf, cidade)
       .subscribe((res) => {
-        console.log(res.json().query.results);
         this.showPrevisaoTempo(res.json().query.results.channel);
         return res.json().query.results;
       });
@@ -129,8 +139,6 @@ export class PrevisaoTempoComponent implements OnInit {
     this.tempMaxima = dadosPrevisaoTempo.item.forecast[0].high;
 
     this.previsaoSemana = dadosPrevisaoTempo.item.forecast.slice(1, 7);
-
-    console.log(this.previsaoSemana);
   }
 
   protected formatarDataPt_BR(data: string): string {
@@ -152,6 +160,7 @@ export class PrevisaoTempoComponent implements OnInit {
     if (Storage !== undefined) {
       if (this.iconeFavorito === 'star_rate') {
         localStorage.setItem('cidade_favorito', this.tituloRegiaoPais);
+        this.cidadeFavorito = this.tituloRegiaoPais;
       } else {
         localStorage.removeItem('cidade_favorito');
       }

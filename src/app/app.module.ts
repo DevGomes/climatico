@@ -49,8 +49,5 @@ moment.locale('pt-br');
 })
 export class AppModule {
 
-  constructor() {
-    console.log(moment(1316116057189).fromNow());
-    console.log(moment('Wed 29 Dec 2017').format('llll').split('às')[0]);
-  }
+  constructor() {  }
 }

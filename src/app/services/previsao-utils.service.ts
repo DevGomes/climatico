@@ -29,7 +29,8 @@ export class PrevisaoUtilsService {
         return this.http.get(`
             https://query.yahooapis.com/v1/public/yql?q=select * from
             weather.forecast where woeid in
-            (select woeid from geo.places(1) where text='${cidade}, ${uf}') and u='c'&format=json`);
+            (select woeid from geo.places(1) where text='${cidade}, ${uf}') and u='c'&format=json`
+        );
 
     }
 
