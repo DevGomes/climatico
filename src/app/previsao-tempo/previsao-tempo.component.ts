@@ -50,8 +50,6 @@ export class PrevisaoTempoComponent implements OnInit {
       this.iconeFavorito = 'star_rate';
       this.obterDadosPrevisaoTempoBr(cidadeFavorito.split(',')[1], cidadeFavorito.split(',')[0]);
     }
-
-    console.log(cidadeFavorito);
   }
 
   private inicializarFormularioReativo(): void {
