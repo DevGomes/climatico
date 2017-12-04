@@ -51,16 +51,16 @@
         <mat-card>
           <mat-card-content>
             <div class="row">
-              <div class="col-md-4 col-xs-4" style="font-size: 42px; font-weight: bold;">
+              <div class="col-md-4 col-xs-4 col-lg-4 temp-agora negrito">
                 {{temperaturaAtual}}°C
               </div>
-              <div class="col-md-4 col-xs-4">
+              <div class="col-md-4 col-xs-4 col-lg-4">
                 <span>Max.</span>
-                <span style="font-size: 30px; font-weight: bold;">{{tempMinima}}°C</span>
+                <span class="temp-agora-max-min">{{tempMinima}}°C</span>
               </div>
-              <div class="col-md-4 col-xs-4">
+              <div class="col-md-4 col-xs-4 col-lg-4">
                 <span>Min.</span>
-                <span style="font-size: 30px; font-weight: bold;"> {{tempMaxima}}°C</span>
+                <span class="temp-agora-max-min"> {{tempMaxima}}°C</span>
               </div>
             </div>
           </mat-card-content>
@@ -73,21 +73,21 @@
 <section class="row">
   <h3>Previão da Semana</h3>
   <hr/>
-  <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6" *ngFor="let prev of previsaoSemana" style="margin-bottom: 8px;">
+  <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 container-temp-semana" 
+    *ngFor="let prev of previsaoSemana">
     <mat-card>
       <mat-card-content>
         <div class="row">
-          <!-- Segunda-feira 27/Nov -->
           <div class="col-md-6 col-xs-6">
             <span>Max.</span>
-            <span style="font-size: 30px; font-weight: bold;">{{prev.high}}°C</span>
+            <span class="temp-semana-max negrito">{{prev.high}}°C</span>
           </div>
           <div class="col-md-6 col-xs-6">
             <span>Min.</span>
-            <span style="font-size: 18px; position: relative;">{{prev.low}}°C</span>
+            <span class="temp-semana-min">{{prev.low}}°C</span>
           </div>
         </div>
-        <span style="position: absolute; bottom: 14px; margin: 0; padding: 0;">{{formatarDataPt_BR(prev.day + ' ' + prev.date)}}</span>
+        <span class="temp-semana-data">{{formatarDataPt_BR(prev.day + ' ' + prev.date)}}</span>
       </mat-card-content>
     </mat-card>
   </div>
