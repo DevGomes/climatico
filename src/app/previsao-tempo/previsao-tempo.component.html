@@ -13,7 +13,7 @@
 
   <div class="col-md-9">
     <h3>
-      <button mat-icon-button (click)="favoritar();"><!--TO_DO -->
+      <button mat-icon-button (click)="favoritar();">
         <mat-icon aria-label="Favoritar cidade" color="accent" matTooltip="Click para favoritar">{{iconeFavorito}}</mat-icon>
       </button>
       {{tituloRegiaoPais}}
@@ -40,7 +40,7 @@
         </mat-autocomplete>
       </mat-form-field>
 
-      <button mat-icon-button (click)="onBuscarPrevisaoTempo($event)" calss="button-busca" 
+      <button mat-icon-button (click)="onBuscarPrevisaoTempo($event)" class="button-busca" 
         [disabled]="!validCampos" matTooltip="Buscar previsão do tempo">
         <mat-icon aria-label="Obter previsão do tempo" color="primary">cloud_done</mat-icon>
       </button>
