@@ -22,7 +22,7 @@
     <form [formGroup]="formulario">
 
       <mat-form-field class="select-estados">
-        <mat-select placeholder="Estado" name="estado" (change)="onBuscarCidades()" formControlName="estado">
+        <mat-select placeholder="Estado" name="estado" (change)="onBuscarCidades()" formControlName="estado" ngDefaultControl>
           <mat-option *ngFor="let estado of estadosBrasilApi" [value]="estado">
             {{ estado.name }}
           </mat-option>
